@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 interface GameSetupProps {
     onStart: (language: string) => void
+    preferredLanguage?: string
 }
 
 const languages = [
@@ -15,9 +16,13 @@ const languages = [
     { id: 'cpp', name: 'C++', weapon: 'Heavy Shotgun' },
 ]
 
-export default function GameSetup({ onStart }: GameSetupProps) {
-    const [selected, setSelected] = useState('javascript')
+export default function GameSetup({ onStart, preferredLanguage = 'javascript' }: GameSetupProps) {
+    const [selected, setSelected] = useState(preferredLanguage)
     const router = useRouter()
+
+    useEffect(() => {
+        setSelected(preferredLanguage)
+    }, [preferredLanguage])
 
     return (
         <div className="relative z-10 max-w-md w-full bg-[#8b5e3c] p-2 rounded-lg shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)] border-4 border-[#5d3a24]">

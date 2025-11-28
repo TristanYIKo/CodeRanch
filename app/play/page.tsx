@@ -1,17 +1,39 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { createClient } from '@/utils/supabase/client'
 import GameCanvas from '@/components/GameCanvas'
 import GameSetup from '@/components/GameSetup'
 
 export default function PlayPage() {
     const [gameState, setGameState] = useState<'setup' | 'playing'>('setup')
     const [language, setLanguage] = useState('javascript')
+    const [preferredLanguage, setPreferredLanguage] = useState('javascript')
 
     // Game Stats
     const [score, setScore] = useState(0)
     const [timeLeft, setTimeLeft] = useState(60)
     const [wpm, setWpm] = useState(0)
+
+    const supabase = createClient()
+
+    useEffect(() => {
+        const fetchPreferredLanguage = async () => {
+            const { data: { user } } = await supabase.auth.getUser()
+            if (user) {
+                const { data } = await supabase
+                    .from('profiles')
+                    .select('preferred_language')
+                    .eq('id', user.id)
+                    .single()
+
+                if (data?.preferred_language) {
+                    setPreferredLanguage(data.preferred_language)
+                }
+            }
+        }
+        fetchPreferredLanguage()
+    }, [supabase])
 
     const handleStartGame = (selectedLanguage: string) => {
         setLanguage(selectedLanguage)
@@ -42,7 +64,7 @@ export default function PlayPage() {
             <div className="absolute bottom-0 w-full h-1/3 bg-[#4a2c1d] opacity-90 z-0 clip-path-hills"></div>
 
             {gameState === 'setup' && (
-                <GameSetup onStart={handleStartGame} />
+                <GameSetup onStart={handleStartGame} preferredLanguage={preferredLanguage} />
             )}
 
             {gameState === 'playing' && (
