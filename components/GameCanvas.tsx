@@ -28,18 +28,8 @@ export default function GameCanvas() {
         let animationFrameId: number;
 
         const render = () => {
-            ctx.fillStyle = '#1a1a1a';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Draw placeholder player
-            ctx.fillStyle = '#3b82f6'; // Blue
-            ctx.fillRect(50, canvas.height / 2 - 25, 50, 50);
-
-            // Draw placeholder text
-            ctx.fillStyle = '#ffffff';
-            ctx.font = '20px monospace';
-            ctx.textAlign = 'center';
-            ctx.fillText('Game Canvas Initialized', canvas.width / 2, canvas.height / 2);
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             animationFrameId = requestAnimationFrame(render);
         };

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Code, Globe, Swords } from 'lucide-react';
 import { createClient } from '@/utils/supabase/server';
 import UserNav from '@/components/UserNav';
@@ -48,45 +49,61 @@ export default async function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-[#e76f51] to-[#f4a261] py-12 px-4 border-b-4 border-black overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
-          <h1 className="text-6xl md:text-8xl font-black text-black mb-8 tracking-tighter uppercase leading-none" style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.2)' }}>
-            The Fastest Syntax<br />In The West
-          </h1>
+      <section className="relative py-12 px-4 border-b-4 border-black overflow-hidden h-[600px] flex items-center">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/desert-bg.png"
+            alt="Desert Background"
+            fill
+            className="object-cover scale-110" // Scale up to crop watermark
+            priority
+          />
+        </div>
 
-          <Link
-            href="/play"
-            className="px-12 py-6 bg-[#b48b68] text-2xl font-bold text-black rounded-xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all uppercase mb-12"
-          >
-            Start Bounty Hunt
-          </Link>
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
 
-          {/* Character Placeholders */}
-          <div className="w-full flex justify-between items-end max-w-4xl mt-10 h-64">
-            <div className="w-32 h-48 bg-stone-800/20 border-4 border-black/20 rounded flex items-center justify-center">
-              <span className="text-black/40 font-bold">Cowboy</span>
-            </div>
+          {/* Left Column: Title and CTA */}
+          <div className="flex flex-col items-start text-left pl-8">
+            <h1 className="text-4xl md:text-6xl font-black text-black mb-6 tracking-tighter uppercase leading-none font-mono" style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.2)' }}>
+              THE FASTEST SYNTAX<br />IN THE WEST
+            </h1>
 
-            {/* Speech Bubble */}
-            <div className="mb-32 bg-[#1a1a1a] text-green-400 p-4 rounded-xl border-4 border-white relative max-w-sm text-left font-mono text-sm">
-              <p>const shoot = (aim) ={'>'} {'{'}</p>
-              <p className="pl-4">return aim ? true : false;</p>
-              <p>{'}'}</p>
-              <div className="absolute -bottom-4 right-10 w-0 h-0 border-l-[10px] border-l-transparent border-t-[15px] border-t-white border-r-[10px] border-r-transparent"></div>
-            </div>
+            <Link
+              href="/play"
+              className="px-16 py-4 bg-[#b48b68] text-xl font-bold text-black rounded-lg border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all uppercase font-mono"
+            >
+              Start Bounty Hunt
+            </Link>
+          </div>
 
-            <div className="w-32 h-48 bg-stone-800/20 border-4 border-black/20 rounded flex items-center justify-center">
-              <span className="text-black/40 font-bold">Bandit</span>
+          {/* Right Column: Scene */}
+          <div className="relative h-full min-h-[400px] flex items-end justify-center">
+            {/* Characters Container */}
+            <div className="flex items-end gap-40 relative z-10 translate-y-8 -translate-x-12">
+              {/* Cowboy */}
+              <div className="w-32 h-48 bg-stone-800/20 border-4 border-black/20 rounded flex items-center justify-center">
+                <span className="text-black/40 font-bold">Cowboy</span>
+              </div>
+
+              {/* Bandit & Bubble */}
+              <div className="relative">
+                {/* Speech Bubble - Coming from Bandit */}
+                <div className="absolute bottom-full right-0 mb-4 bg-[#1a1a1a] text-green-400 p-4 rounded-xl border-4 border-white w-80 font-mono text-sm shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)]">
+                  <p>const shoot = (aim) ={'>'} {'{'}</p>
+                  <p className="pl-4">return aim ? true : false;</p>
+                  <p>{'}'}</p>
+                  {/* Tail pointing to Bandit */}
+                  <div className="absolute -bottom-4 right-8 w-0 h-0 border-l-[10px] border-l-transparent border-t-[15px] border-t-white border-r-[10px] border-r-transparent"></div>
+                </div>
+
+                <div className="w-32 h-48 bg-stone-800/20 border-4 border-black/20 rounded flex items-center justify-center">
+                  <span className="text-black/40 font-bold">Bandit</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Sun */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-yellow-400 rounded-t-full border-t-4 border-x-4 border-black opacity-80 pointer-events-none"></div>
-
-        {/* Landscape Elements */}
-        <div className="absolute bottom-0 left-10 w-16 h-32 bg-green-800 rounded-t-lg border-4 border-black opacity-60"></div>
-        <div className="absolute bottom-0 right-10 w-16 h-48 bg-green-800 rounded-t-lg border-4 border-black opacity-60"></div>
       </section>
 
       {/* Quick Draw Section */}
