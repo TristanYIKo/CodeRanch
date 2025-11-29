@@ -53,10 +53,10 @@ export default async function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/desert-bg.png"
+            src="/big-dessert-bg.png"
             alt="Desert Background"
             fill
-            className="object-cover scale-110" // Scale up to crop watermark
+            className="object-cover object-center"
             priority
           />
         </div>
