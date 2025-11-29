@@ -15,23 +15,31 @@ export default async function Home() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col font-mono">
+    <main className="min-h-screen flex flex-col font-mono overflow-x-hidden">
       {/* Navigation Bar */}
-      <nav className="bg-[#2a2a2a] text-white p-4 border-b-4 border-black">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            {/* Logo Placeholder */}
-            <div className="w-10 h-10 bg-stone-600 rounded flex items-center justify-center">
-              <span className="text-xl">🔫</span>
+      <nav className="bg-[#2a2a2a] text-white border-b-4 border-black h-16">
+        <div className="max-w-7xl mx-auto flex justify-between items-center h-full">
+          <div className="flex items-center h-full">
+            <div className="relative bg-[#b48b68] border-r-4 border-black px-8 transform -skew-x-20 flex items-center gap-4 h-full -ml-12 before:content-[''] before:absolute before:top-0 before:bottom-0 before:right-[99%] before:w-screen before:bg-[#b48b68]">
+              <div className="transform skew-x-20 flex items-center gap-4 -ml-2">
+                <div className="relative w-22 h-22">
+                  <Image
+                    src="/banner_revolvericon.png"
+                    alt="CodeRanch Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-3xl font-bold tracking-tighter text-black font-[family-name:var(--font-pixel)] pt-2">CodeRanch</span>
+              </div>
             </div>
-            <span className="text-2xl font-bold tracking-wider">CodeRanch</span>
           </div>
 
-          <div className="flex items-center gap-4">
-            <button className="px-4 py-2 bg-[#b48b68] text-black font-bold rounded shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none transition-all border-2 border-black">
+          <div className="flex items-center gap-4 pr-4">
+            <button className="px-4 py-2 text-base bg-[#b48b68] text-black font-bold rounded shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none transition-all border-2 border-black">
               Leaderboard
             </button>
-            <button className="px-4 py-2 bg-[#b48b68] text-black font-bold rounded shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none transition-all border-2 border-black">
+            <button className="px-4 py-2 text-base bg-[#b48b68] text-black font-bold rounded shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none transition-all border-2 border-black">
               About
             </button>
             {user ? (
@@ -39,7 +47,7 @@ export default async function Home() {
             ) : (
               <Link
                 href="/login"
-                className="px-6 py-2 bg-orange-500 text-black font-bold rounded shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none transition-all border-2 border-black uppercase"
+                className="px-6 py-2 text-base bg-orange-500 text-black font-bold rounded shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-none transition-all border-2 border-black uppercase"
               >
                 Saddle Up / Login
               </Link>
