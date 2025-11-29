@@ -65,7 +65,7 @@ export default async function Home() {
 
           {/* Left Column: Title and CTA */}
           <div className="flex flex-col items-start text-left pl-8">
-            <h1 className="text-4xl md:text-6xl font-black text-black mb-6 tracking-tighter uppercase leading-none font-mono" style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.2)' }}>
+            <h1 className="text-3xl md:text-5xl font-black text-black mb-6 tracking-tighter uppercase leading-tight font-[family-name:var(--font-pixel)]" style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.2)' }}>
               THE FASTEST SYNTAX<br />IN THE WEST
             </h1>
 
