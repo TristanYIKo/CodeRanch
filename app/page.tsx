@@ -65,13 +65,13 @@ export default async function Home() {
 
           {/* Left Column: Title and CTA */}
           <div className="flex flex-col items-start text-left pl-8">
-            <h1 className="text-3xl md:text-5xl font-black text-black mb-6 tracking-tighter uppercase leading-tight font-[family-name:var(--font-pixel)]" style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.2)' }}>
+            <h1 className="text-3xl md:text-5xl font-black text-black mb-6 tracking-widest uppercase leading-tight font-[family-name:var(--font-pixel)]" style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.2)' }}>
               THE FASTEST SYNTAX<br />IN THE WEST
             </h1>
 
             <Link
               href="/play"
-              className="px-16 py-4 bg-[#b48b68] text-xl font-bold text-black rounded-lg border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all uppercase font-mono"
+              className="px-16 py-4 bg-[#b48b68] text-xl font-bold text-black rounded-lg border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all uppercase font-mono tracking-widest"
             >
               Start Bounty Hunt
             </Link>
@@ -82,23 +82,33 @@ export default async function Home() {
             {/* Characters Container */}
             <div className="flex items-end gap-40 relative z-10 translate-y-8 -translate-x-12">
               {/* Cowboy */}
-              <div className="w-32 h-48 bg-stone-800/20 border-4 border-black/20 rounded flex items-center justify-center">
-                <span className="text-black/40 font-bold">Cowboy</span>
+              <div className="relative w-56 h-72">
+                <Image
+                  src="/homescreen_cowboy2.png"
+                  alt="Cowboy"
+                  fill
+                  className="object-contain object-bottom"
+                />
               </div>
 
               {/* Bandit & Bubble */}
               <div className="relative">
                 {/* Speech Bubble - Coming from Bandit */}
-                <div className="absolute bottom-full right-0 mb-4 bg-[#1a1a1a] text-green-400 p-4 rounded-xl border-4 border-white w-80 font-mono text-sm shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)]">
+                <div className="absolute bottom-full right-16 -mb-8 bg-[#1a1a1a] text-green-400 p-4 rounded-xl border-4 border-white w-80 font-mono text-sm shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] tracking-wide z-20">
                   <p>const shoot = (aim) ={'>'} {'{'}</p>
                   <p className="pl-4">return aim ? true : false;</p>
                   <p>{'}'}</p>
                   {/* Tail pointing to Bandit */}
-                  <div className="absolute -bottom-4 right-8 w-0 h-0 border-l-[10px] border-l-transparent border-t-[15px] border-t-white border-r-[10px] border-r-transparent"></div>
+                  <div className="absolute -bottom-4 right-2 w-0 h-0 border-l-[10px] border-l-transparent border-t-[15px] border-t-white border-r-[10px] border-r-transparent"></div>
                 </div>
 
-                <div className="w-32 h-48 bg-stone-800/20 border-4 border-black/20 rounded flex items-center justify-center">
-                  <span className="text-black/40 font-bold">Bandit</span>
+                <div className="relative w-48 h-64">
+                  <Image
+                    src="/homescreen_bandit2.png"
+                    alt="Bandit"
+                    fill
+                    className="object-contain object-bottom"
+                  />
                 </div>
               </div>
             </div>
