@@ -56,7 +56,7 @@ export default async function Home() {
             src="/big-dessert-bg.png"
             alt="Desert Background"
             fill
-            className="object-cover object-center"
+            className="object-cover object-bottom"
             priority
           />
         </div>
